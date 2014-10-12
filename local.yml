@@ -1,0 +1,18 @@
+---
+
+- name: Provision an OS X system
+  hosts: all
+  sudo: yes
+  sudo_user: root
+  remote_user: root
+  vars:
+    - user: Jon
+    - connection: local
+  vars_files:
+    - env_vars/main.yml
+
+  roles:
+    - system
+    - packages
+    - applications
+    - settings

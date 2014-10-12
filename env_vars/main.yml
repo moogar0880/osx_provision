@@ -1,0 +1,40 @@
+---
+
+downloads: ~/.ansible-downloads/
+
+homebrew_packages:
+  - python3
+  - boost
+  - libevent
+  - pkg-config
+  - tmux
+  - autoconf
+  - gettext
+  - ssh-copy-id
+  - cowsay
+  - ios-sim
+  - readline
+  - openssl
+  - pv
+  - wget
+  - caskroom/cask/brew-cask
+
+homebrew_python_packages:
+  - libtiff
+  - libjpeg
+  - webp
+  - little-cms2
+
+homebrew_taps:
+  - caskroom/cask
+  - homebrew/binary
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - adium
+  - google-chrome
+  - handbrake
+  - menumeters
+  - skype
+  - sublime-text # Note - Sublime Text 2 only, at this time...
+  - vlc

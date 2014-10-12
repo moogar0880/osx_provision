@@ -1,0 +1,11 @@
+---
+
+- name: Install Homebrew System Packages
+  homebrew: name={{ item }} state=present update_homebrew=yes
+  with_items: homebrew_packages
+  tags: packages
+
+- name: Install Homebrew Pillow Packages
+  homebrew: name {{ item }} state=present update_homebrew=yes
+  with_items: homebrew_python_packages
+  tags: packages
