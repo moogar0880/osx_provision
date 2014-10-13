@@ -6,6 +6,12 @@
 - name: Set file permissions on Git deploy Key
   file: path={{ playbook_path }}/provision.key state=touch mode="400"
 
+- name: Set Global Git Username
+  shell: "git config --global user.name 'moogar0880'"
+
+- name: Set Global Git Email
+  shell: "git config --global user.email 'moogar0880@gmail.com'"
+
 - name: Setup the Playbook Repo
   git:
     repo: "{{ git_repo }}"
