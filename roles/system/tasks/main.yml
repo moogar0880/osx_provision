@@ -1,7 +1,7 @@
 ---
 
+- include: github.yml
+
 - include: virtualenv.yml
 
-# - name: Update Playbook
-
-# - name: Configure Ansible Cron Job
+# - include: cron.yml

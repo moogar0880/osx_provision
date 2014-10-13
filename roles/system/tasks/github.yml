@@ -1,0 +1,15 @@
+---
+
+- name: Copy the private github deploy key
+  copy: content="{{ git_deploy_key }}" dest={{ playbook_path }}/provision.key
+
+- name: Set file permissions on Git deploy Key
+  file: path={{ playbook_path }}/provision.key state=touch mode="400"
+
+- name: Setup the Playbook Repo
+  git:
+    repo: "{{ git_repo }}"
+    dest: "{{ playbook_path }}"
+    key_file: "{{ playbook_path }}/provision.key"
+    accept_hostkey: yes
+    version: "master"
