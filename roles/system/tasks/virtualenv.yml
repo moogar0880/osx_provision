@@ -1,0 +1,4 @@
+---
+
+- name: Create .virtualenvs Directory
+  file: path=~/.virtualenvs/ state=directory
