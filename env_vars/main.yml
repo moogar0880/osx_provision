@@ -1,6 +1,8 @@
 ---
 
+git_repo: ssh://git@github.com/moogar0880/osx_provision.git
 downloads: ~/.ansible-downloads/
+playbook_path: ~/.deploy/
 
 homebrew_packages:
   - python3
