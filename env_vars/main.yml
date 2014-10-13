@@ -32,9 +32,13 @@ homebrew_taps:
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - adium
+  - dropbox
   - google-chrome
   - handbrake
   - menumeters
   - skype
   - sublime-text # Note - Sublime Text 2 only, at this time...
   - vlc
+  # AirVPN, PyCharm, SublerCLI, Configure Git, Misc iTunes Accounts, AppCleaner
+  # CCleaner, Cobook, Disk Inventory X, Flame, Flux, Google Drive, Onyx,
+  # N Game, Spotify, Mint, Macfusion (X11)
