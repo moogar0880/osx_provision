@@ -1,0 +1,9 @@
+---
+
+- include: zsh.yml
+
+# - name: Add Directory for go get packages
+#   file: path="{{ home }}.go-packages" state=directory
+
+# - name: Export GOPATH
+#   lineinfile: 

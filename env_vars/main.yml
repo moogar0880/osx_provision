@@ -1,8 +1,9 @@
 ---
-
+user: Jon
 git_repo: ssh://git@github.com/moogar0880/osx_provision.git
-downloads: ~/.ansible-downloads/
-playbook_path: ~/.deploy/
+home: "/Users/{{ user }}/"
+downloads: "{{ home }}.ansible-downloads/"
+playbook_path: "{{ home }}.deploy/"
 
 homebrew_packages:
   - python3
@@ -19,7 +20,9 @@ homebrew_packages:
   - openssl
   - pv
   - wget
-  - caskroom/cask/brew-cask
+  - hg
+  - go
+  - zsh
 
 homebrew_python_packages:
   - libtiff
@@ -33,7 +36,6 @@ homebrew_taps:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - adium
   - dropbox
   - google-chrome
   - handbrake
@@ -41,6 +43,12 @@ homebrew_cask_apps:
   - skype
   - sublime-text # Note - Sublime Text 2 only, at this time...
   - vlc
-  # AirVPN, PyCharm, SublerCLI, Configure Git, Misc iTunes Accounts, AppCleaner
-  # CCleaner, Cobook, Disk Inventory X, Flame, Flux, Google Drive, Onyx,
-  # N Game, Spotify, Mint, Macfusion (X11)
+  - pycharm
+  - flux
+  - onyx
+  - spotify
+  - google-drive
+  - macfusion
+  - appcleaner
+  - ccleaner
+  - disk-inventory-x

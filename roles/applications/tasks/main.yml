@@ -1,12 +1,18 @@
 ---
 
 - name: Install Apps From Homebrew (Cask)
-  homebrew_cask: name {{ item }} state=present
+  homebrew_cask: 
+    name={{ item }}
+    state=present
   with_items: homebrew_cask_apps
   tags: packages
 
 - name: Configure Sublime User Preferences
-  template: src=templates/sublime.j2 dest={{ sublime_path }}/Preferences.sublime-settings
+  template: 
+    src="sublime.j2"
+    dest={{ sublime_path }}/Preferences.sublime-settings
 
 - name: Configure Sublime Python Preferences
-  template: src=templates/python-sublime.j2 dest={{ sublime_path }}/Python.sublime-settings
+  template:
+    src="python-sublime.j2"
+    dest={{ sublime_path }}/Python.sublime-settings

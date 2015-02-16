@@ -23,12 +23,14 @@ export PATH=/usr/local/bin:$PATH
 # Download and install Ansible
 if [[ ! -x /usr/local/bin/ansible ]]; then
     brew install ansible
+    brew install caskroom/cask/brew-cask
 fi
 
 # Make the code directory
 mkdir -p ${SRC_DIRECTORY}
 
 # Provision the box
+# ansible-playbook --ask-sudo-pass -i inventory local.yml --connection=local
 ansible-playbook --ask-sudo-pass -i ${ANSIBLE_DIRECTORY}/inventory ${ANSIBLE_DIRECTORY}/local.yml --connection=local
 
 # Link the casks.
