@@ -5,3 +5,6 @@
 - include: virtualenv.yml
 
 # - include: cron.yml
+
+# Tap the versions caskroom so we can install Sublime Text 3
+homebrew_tap: tap=caskroom/versions state=present

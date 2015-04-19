@@ -41,7 +41,7 @@ homebrew_cask_apps:
   - handbrake
   - menumeters
   - skype
-  - sublime-text # Note - Sublime Text 2 only, at this time...
+  - sublime-text3
   - vlc
   - pycharm
   - flux
