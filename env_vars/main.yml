@@ -1,11 +1,14 @@
 ---
 user: Jon
+github_username: moogar0880
+github_email: moogar0880@gmail.com
 git_repo: ssh://git@github.com/moogar0880/osx_provision.git
 home: "/Users/{{ user }}/"
 downloads: "{{ home }}.ansible-downloads/"
 playbook_path: "{{ home }}.deploy/"
 
 homebrew_packages:
+  - python
   - python3
   - boost
   - libevent
@@ -23,6 +26,8 @@ homebrew_packages:
   - hg
   - go
   - zsh
+  - boot2docker
+  - docker
 
 homebrew_python_packages:
   - libtiff
@@ -32,6 +37,7 @@ homebrew_python_packages:
 
 homebrew_taps:
   - caskroom/cask
+  - caskroom/homebrew-versions
   - homebrew/binary
 
 homebrew_cask_appdir: /Applications
