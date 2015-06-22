@@ -8,7 +8,7 @@
   with_items: homebrew_packages
   tags: packages
 
-- name: Install Homebrew Pillow Packages
+- name: Install Homebrew Python Packages
   homebrew:
     name={{ item }}
     state=present
