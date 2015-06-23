@@ -1,0 +1,4 @@
+---
+
+- name: Add Directory for go get-ing packages
+  file: path="{{ home }}.go-packages" state=directory

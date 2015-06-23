@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-export CC=gcc
+export CC=cc
 export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 
 # Set name of the theme to load.
@@ -17,11 +17,10 @@ plugins=(git osx homebrew)
 
 source $ZSH/oh-my-zsh.sh
 
-# PATH configurations
-export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:$HOME/Git/cookbooks/dyn_chef_data/bin:/usr/local/opt/go/libexec/bin:/usr/local/Cellar/pkg-config/0.28/bin"
+# User configuration
 
+export PATH="{{ home }}.rbenv/shims:{{ home }}.rbenv/shims:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:{{ home }}Git/cookbooks/dyn_chef_data/bin:/usr/local/opt/go/libexec/bin:/usr/local/Cellar/pkg-config/0.28/bin"
 export GOPATH=$HOME/.go-packages
-
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/local/Library/ENV/pkgconfig/10.9:/usr/local/opt/python3/Frameworks/Python.framework/Versions/3.4/lib/pkgconfig:/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/pkgconfig
 
 ### Virtualenv Helpers ###
@@ -30,7 +29,7 @@ alias venvs="ls $VENV_ROOT"
 
 activate()
 {
-    source $VENV_ROOT/$1/bin/activate
+    source $VENV_ROOT/$1/bin/activate && rezsh
 }
 
 # You may need to manually set your language environment
@@ -40,9 +39,20 @@ activate()
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='subl --wait'
 else
-  export EDITOR='mvim'
+  export EDITOR='subl --wait'
 fi
 
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
 # ZSH aliases
 export ZSHRC="$HOME/.zshrc"
 alias zshconfig="subl $ZSHRC"
@@ -54,7 +64,12 @@ rezsh()
 	if [ -n "$VIRTUAL_ENV" ]; then
 		source "$ZSHRC"
 		source "$VIRTUAL_ENV/bin/activate"
-	else 
+	else
 		source "$ZSHRC"
 	fi
 }
+
+# Docker Variables
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH={{ home }}.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
