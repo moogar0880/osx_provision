@@ -1,0 +1,30 @@
+---
+
+homebrew_packages:
+  - python
+  - python3
+  - boost
+  - libevent
+  - pkg-config
+  - tmux
+  - autoconf
+  - gettext
+  - ssh-copy-id
+  - cowsay
+  - ios-sim
+  - readline
+  - openssl
+  - pv
+  - wget
+  - hg
+  - go
+  - zsh
+  - boot2docker
+  - docker
+  - hub
+
+homebrew_python_packages:
+  - libtiff
+  - libjpeg
+  - webp
+  - little-cms2

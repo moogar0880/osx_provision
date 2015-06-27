@@ -23,7 +23,6 @@ export PATH=/usr/local/bin:$PATH
 # Download and install Ansible
 if [[ ! -x /usr/local/bin/ansible ]]; then
     brew install ansible
-    brew install caskroom/cask/brew-cask
 fi
 
 # Make the code directory
