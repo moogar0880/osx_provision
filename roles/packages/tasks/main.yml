@@ -6,7 +6,7 @@
     state=present
     update_homebrew=yes
   with_items: homebrew_packages
-  tags: packages
+  tags: ["packages", "system"]
 
 - name: Install Homebrew Python Packages
   homebrew:
@@ -14,4 +14,4 @@
     state=present
     update_homebrew=yes
   with_items: homebrew_python_packages
-  tags: packages
+  tags: ["packages", "python"]

@@ -1,1 +1,5 @@
 ---
+homebrew_taps:
+  - caskroom/cask
+  - caskroom/homebrew-versions
+  - homebrew/binary

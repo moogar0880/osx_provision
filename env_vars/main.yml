@@ -1,60 +1,8 @@
 ---
 user: Jon
+home: "/Users/{{ user }}/"
 github_username: moogar0880
 github_email: moogar0880@gmail.com
 git_repo: ssh://git@github.com/moogar0880/osx_provision.git
-home: "/Users/{{ user }}/"
 downloads: "{{ home }}.ansible-downloads/"
 playbook_path: "{{ home }}.deploy/"
-
-homebrew_packages:
-  - python
-  - python3
-  - boost
-  - libevent
-  - pkg-config
-  - tmux
-  - autoconf
-  - gettext
-  - ssh-copy-id
-  - cowsay
-  - ios-sim
-  - readline
-  - openssl
-  - pv
-  - wget
-  - hg
-  - go
-  - zsh
-  - boot2docker
-  - docker
-
-homebrew_python_packages:
-  - libtiff
-  - libjpeg
-  - webp
-  - little-cms2
-
-homebrew_taps:
-  - caskroom/cask
-  - caskroom/homebrew-versions
-  - homebrew/binary
-
-homebrew_cask_appdir: /Applications
-homebrew_cask_apps:
-  - dropbox
-  - google-chrome
-  - handbrake
-  - menumeters
-  - skype
-  - sublime-text3
-  - vlc
-  - pycharm
-  - flux
-  - onyx
-  - spotify
-  - google-drive
-  - macfusion
-  - appcleaner
-  - ccleaner
-  - disk-inventory-x

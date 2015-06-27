@@ -1,6 +1,7 @@
 ---
 
-- homebrew_tap:
+- name: Configure homebrew taps
+  homebrew_tap:
     tap={{ item }}
     state=present
   with_items: homebrew_taps
@@ -11,5 +12,3 @@
 - include: virtualenv.yml
 
 - include: golang.yml
-
-# - include: cron.yml
