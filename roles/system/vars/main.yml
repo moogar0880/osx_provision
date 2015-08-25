@@ -1,5 +1,13 @@
 ---
+
 homebrew_taps:
   - caskroom/cask
   - caskroom/homebrew-versions
   - homebrew/binary
+
+github_username: moogar0880
+github_email: moogar0880@gmail.com
+git_repo: ssh://git@github.com/moogar0880/osx_provision.git
+
+# The path to checkout the latest version of this playbook to
+playbook_path: "{{ home }}/.deploy"

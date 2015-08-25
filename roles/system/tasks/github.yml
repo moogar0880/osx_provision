@@ -1,21 +1,14 @@
 ---
 
-# - name: Copy the private github deploy key
-#   copy: content="{{ git_deploy_key }}" dest={{ playbook_path }}provision.key
-
-# - name: Set file permissions on Git deploy Key
-#   file: path={{ playbook_path }}provision.key state=touch mode="400"
-
 - name: Set Global Git Username
   shell: "git config --global user.name '{{ github_username }}'"
 
 - name: Set Global Git Email
   shell: "git config --global user.email '{{ github_email}}'"
 
-# - name: Setup the Playbook Repo
-#   git:
-#     repo: "{{ git_repo }}"
-#     dest: "{{ playbook_path }}"
-#     key_file: "{{ playbook_path }}provision.key"
-#     accept_hostkey: yes
-#     version: "master"
+- name: Download the latest Playbook Version
+  git:
+    repo: "{{ git_repo }}"
+    dest: "{{ playbook_path }}"
+    accept_hostkey: yes
+    version: "master"
