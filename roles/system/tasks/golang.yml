@@ -2,6 +2,6 @@
 
 - name: Add Directory for go get-ing packages (GOPATH)
   file:
-    path="{{ home }}.go-packages"
+    path="{{ home }}/.go-packages"
     state=directory
     owner={{ user }}

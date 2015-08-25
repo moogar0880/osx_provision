@@ -10,5 +10,7 @@
   git:
     repo: "{{ git_repo }}"
     dest: "{{ playbook_path }}"
+    force: yes
+    update: yes
     accept_hostkey: yes
     version: "master"

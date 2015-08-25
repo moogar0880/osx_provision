@@ -5,4 +5,4 @@
   cron:
     name="ansible-system-update"
     minute="0"
-    job={{ cron_job }}
+    job="{{ cron_job }}"
