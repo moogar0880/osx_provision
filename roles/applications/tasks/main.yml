@@ -11,10 +11,12 @@
   copy:
     src="Preferences.sublime-settings"
     dest="{{ sublime_path }}/Preferences.sublime-settings"
-    user={{ user }}
+    owner={{ user }}
+  tags: applications
 
 - name: Configure Sublime Python Preferences
   copy:
     src="Python.sublime-settings"
     dest="{{ sublime_path }}/Python.sublime-settings"
-    user={{ user }}
+    owner={{ user }}
+  tags: applications
