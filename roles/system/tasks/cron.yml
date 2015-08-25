@@ -1,0 +1,11 @@
+---
+
+# Runs every hour, might be overkill, might not
+- name: Run the latest version of this playbook via crontab
+  cron:
+    name="ansible-system-update"
+    minute="0"
+    job="{{ cron_job }}"
+    user=root
+  sudo: yes
+  sudo_user: root

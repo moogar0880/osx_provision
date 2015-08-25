@@ -12,3 +12,5 @@
 - include: virtualenv.yml
 
 - include: golang.yml
+
+- include: cron.yml

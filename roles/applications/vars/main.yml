@@ -1,6 +1,6 @@
 ---
 
-sublime_path: "{{ home }}Library/Application Support/Sublime Text 3/Packages/User"
+sublime_path: "{{ home }}/Library/Application Support/Sublime Text 3/Packages/User"
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
@@ -16,7 +16,5 @@ homebrew_cask_apps:
   - onyx
   - spotify
   - google-drive
-  - macfusion
   - appcleaner
-  - ccleaner
   - disk-inventory-x

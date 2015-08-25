@@ -1,4 +1,7 @@
 ---
 
 - name: Create .virtualenvs Directory
-  file: path=~/.virtualenvs/ state=directory
+  file:
+    path="{{ home }}/.virtualenvs/"
+    state=directory
+    owner={{ user }}
