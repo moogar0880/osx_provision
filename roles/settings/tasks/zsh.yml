@@ -5,24 +5,20 @@
   register: ohmyzsh_conf
 
 - name: Ensure oh-my-zsh is Installed
-  command: "curl -L http://install.ohmyz.sh | sh"
+  command: "sh -c '$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)'"
   when: ohmyzsh_conf.stat.exists == False
 
 - name: Put Custom Theme in Place
-  copy: 
+  copy:
     src=jnappi.zsh-theme
-    dest={{ home }}.oh-my-zsh/custom/themes/jnappi.zsh-theme
+    dest="{{ home }}/.oh-my-zsh/custom/themes/jnappi.zsh-theme"
     owner={{ user }}
     group=staff
 
 - name: Setup .zshrc
-  template: 
-    src=zshrc.j2 
-    dest=~/.zshrc
-    owner={{ user }} 
-    group=staff 
+  template:
+    src=zshrc.j2
+    dest="{{ home }}/.zshrc"
+    owner={{ user }}
+    group=staff
     mode=0644
-
-- name: Set ZSH as Default Shell
-  command: "chsh -s /bin/zsh {{ user }}"
-
