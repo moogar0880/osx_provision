@@ -11,3 +11,7 @@ git_repo: ssh://git@github.com/moogar0880/osx_provision.git
 
 # The path to checkout the latest version of this playbook to
 playbook_path: "{{ home }}/.deploy"
+playbook: "{{ playbook_path }}/osx_provision"
+
+# The hourly cronjob to run
+cron_job: "ansible-playbook -i {{ playbook }}/inventory {{ playbook }}/local.yml --connection=local"
