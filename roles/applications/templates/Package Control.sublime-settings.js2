@@ -1,0 +1,8 @@
+{
+    "installed_packages":
+    [
+{% for package in st3_pcontrol_packages %}
+        "{{ package }}"{% if not loop.last %},{% endif %}
+{% endfor %}
+    ]
+}

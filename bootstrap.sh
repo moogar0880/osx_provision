@@ -34,3 +34,9 @@ ansible-playbook --ask-sudo-pass -i ${ANSIBLE_DIRECTORY}/inventory ${ANSIBLE_DIR
 
 # Link the casks.
 ~/.bin/link-casks
+
+# Change the default shell for $USER
+#
+# Will require a password for the provided user, so this can't be handled
+# automatically in the ansible playbook
+chsh -s /bin/zsh $USER

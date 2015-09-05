@@ -1,0 +1,54 @@
+---
+
+- name: Sublime Text 3 | Install | ST3 Homebrew (Cask)
+  homebrew_cask:
+    name="sublime-text3"
+    state=present
+  tags: ["applications", "sublime"]
+
+- name: "Sublime Text 3 | Package Control | Ensure package dirs owner and rights"
+  file:
+    state: directory
+    path: "{{ item }}"
+    mode: "u=rwx,g=rx,o=rx"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+  with_items:
+    - "{{ st3_installed_path }}"
+    - "{{ st3_user_path }}"
+  tags: ["applications", "sublime"]
+
+- name: "Sublime Text 3 | Package Control | Ensure 'Package Control.sublime-package' present"
+  get_url:
+    url: "{{ st3_pcontrol_url }}"
+    dest: "{{ st3_installed_path }}/Package Control.sublime-package"
+    mode: "u=rw,g=rw,o=rw"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+  tags: ["applications", "sublime"]
+
+- name: "Sublime Text 3 | Package Control | Generate 'Package Control.sublime-settings'"
+  template:
+    src: "Package Control.sublime-settings.js2"
+    dest: "{{ st3_user_path }}/Package Control.sublime-settings"
+    mode: "u=rw,g=rw,o=rw"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    backup: yes
+  tags: ["applications", "sublime"]
+
+- name: "Sublime Text 3 | Settings | Configure User Preferences"
+  copy:
+    src="Preferences.sublime-settings"
+    dest="{{ st3_path }}/Preferences.sublime-settings"
+    owner={{ user }}
+    group={{ group }}
+  tags: ["applications", "sublime"]
+
+- name: "Sublime Text 3 | Settings | Configure Python Preferences"
+  copy:
+    src="Python.sublime-settings"
+    dest="{{ st3_path }}/Python.sublime-settings"
+    owner={{ user }}
+    group={{ group }}
+  tags: ["applications", "sublime"]
