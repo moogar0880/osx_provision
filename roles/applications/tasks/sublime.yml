@@ -16,6 +16,7 @@
   with_items:
     - "{{ st3_installed_path }}"
     - "{{ st3_user_path }}"
+  tags: ["applications", "sublime"]
 
 - name: "Sublime Text 3 | Package Control | Ensure 'Package Control.sublime-package' present"
   get_url:
@@ -24,6 +25,7 @@
     mode: "u=rw,g=rw,o=rw"
     owner: "{{ user }}"
     group: "{{ group }}"
+  tags: ["applications", "sublime"]
 
 - name: "Sublime Text 3 | Package Control | Generate 'Package Control.sublime-settings'"
   template:
@@ -33,6 +35,7 @@
     owner: "{{ user }}"
     group: "{{ group }}"
     backup: yes
+  tags: ["applications", "sublime"]
 
 - name: "Sublime Text 3 | Settings | Configure User Preferences"
   copy:
@@ -40,7 +43,7 @@
     dest="{{ st3_path }}/Preferences.sublime-settings"
     owner={{ user }}
     group={{ group }}
-  tags: applications
+  tags: ["applications", "sublime"]
 
 - name: "Sublime Text 3 | Settings | Configure Python Preferences"
   copy:
@@ -48,4 +51,4 @@
     dest="{{ st3_path }}/Python.sublime-settings"
     owner={{ user }}
     group={{ group }}
-  tags: applications
+  tags: ["applications", "sublime"]
