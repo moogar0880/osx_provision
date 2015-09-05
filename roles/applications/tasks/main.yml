@@ -7,16 +7,5 @@
   with_items: homebrew_cask_apps
   tags: applications
 
-- name: Configure Sublime User Preferences
-  copy:
-    src="Preferences.sublime-settings"
-    dest="{{ sublime_path }}/Preferences.sublime-settings"
-    owner={{ user }}
-  tags: applications
-
-- name: Configure Sublime Python Preferences
-  copy:
-    src="Python.sublime-settings"
-    dest="{{ sublime_path }}/Python.sublime-settings"
-    owner={{ user }}
-  tags: applications
+# Install and configure sublime text 3
+- include: sublime.yml
