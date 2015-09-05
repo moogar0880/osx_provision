@@ -1,5 +1,6 @@
 ---
 user: Jon
+group: staff
 home: "/Users/{{ user }}"
 
 downloads: "{{ home }}/.ansible-downloads"
