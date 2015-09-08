@@ -1,6 +1,28 @@
 ---
 
 ###
+### Homebrew Cask Applications
+###
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - dropbox
+  - google-chrome
+  - handbrake
+  - menumeters
+  - skype
+  - sublime-text3
+  - vlc
+  - pycharm
+  - flux
+  - onyx
+  - spotify
+  - google-drive
+  - appcleaner
+  - disk-inventory-x
+  - shiftit
+  - iterm2
+
+###
 ### Sublime Text 3 Variables
 ###
 st3_path: "{{ home }}/Library/Application Support/Sublime Text 3"
@@ -20,20 +42,3 @@ st3_pcontrol_packages:
   - "Theme - Soda"
   - "Theme - Soda SolarizedDark"
   - "Theme - Sodarized"
-
-homebrew_cask_appdir: /Applications
-homebrew_cask_apps:
-  - dropbox
-  - google-chrome
-  - handbrake
-  - menumeters
-  - skype
-  - sublime-text3
-  - vlc
-  - pycharm
-  - flux
-  - onyx
-  - spotify
-  - google-drive
-  - appcleaner
-  - disk-inventory-x
