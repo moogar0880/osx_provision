@@ -10,8 +10,9 @@
 ###############################################################################
 venv_name() {
 	local venv=$VIRTUAL_ENV
+	local py_version=$(python -c "import sys; print(sys.version.split()[0])")
 	if [[ -n "${venv##*/}" ]] ; then
-		echo "%{$fg[yellow]%}venv:%{$reset_color%}%{$fg[red]%}${venv##*/}%{$reset_color%} $EPS1"
+		echo "%{$fg[yellow]%}venv:%{$reset_color%}%{$fg[red]%}${venv##*/}-${py_version##*/}%{$reset_color%} $EPS1"
 	fi
 }
 

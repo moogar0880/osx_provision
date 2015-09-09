@@ -65,18 +65,82 @@ export GOPATH=$HOME/.go-packages
 ###
 ### Virtualenv Settings
 ###
-export VENV_ROOT=$HOME/.virtualenvs/
-alias venvs="ls $VENV_ROOT"
+export VENV_PATH=$HOME/.virtualenvs
+
+# Setting $VIRTUAL_ENV_DISABLE_PROMPT disables the default virtualenv prompt
+# from appearing to the left of your shell prompt.
+export VIRTUAL_ENV_DISABLE_PROMPT=true
 
 ###############################################################################
-# Activate the specified virtualenv for the current shell session
+# List all available virtualenvs located under $VENV_PATH
+#
+# Globals:
+#   VENV_PATH
+# Args
+#   1) -l (optional) - Long list of available virtualenv names
+#	2) -lv (optional) - Long list of available virtualenv names and the
+#		version of python installed under that virtualenv
+###############################################################################
+venvs()
+{
+	# Set default values for LIST and LIST_VERSION commandline flags
+	LIST=false
+	LIST_VERSION=false
+
+	# Parse provided commandline flags. If we received an accepted flag, set
+	# it's associated variable accordingly.
+	for i in "$@"
+	do
+	case $i in
+	    -l)
+	    LIST=true
+	    shift # past argument with no value
+	    ;;
+	    -lv)
+	    LIST_VERSION=true
+	    shift # past argument with no value
+	    ;;
+	    *)
+	          # unknown option
+	    ;;
+	esac
+	done
+
+	if [ $LIST = true ]; then
+		command ls -l "$VENV_PATH"  | grep $USER | awk '{print $NF}'
+	elif [ $LIST_VERSION = true ]; then
+		venvs -l | while read venv; do echo "$venv - $(print_py_version $venv)"; done
+	else
+		ls "$VENV_PATH"
+	fi
+}
+
+###############################################################################
+# Echo the version of python installed to a specific virtualenv. Virtualenvs
+# with Python 2.x interpreters would print their version strings on a newline
+# when calling $(python --version), making output from the venvs function less
+# pretty. Hence, this (sort-of-hacky) utility function.
+#
+# Globals:
+#   VENV_PATH
+# Args
+#   1) The name of a virtualenv whose python version you would like to print
+###############################################################################
+print_py_version()
+{
+	local venv_name=$1
+	echo $($VENV_PATH/$venv_name/bin/python -c "import sys; print(sys.version.split()[0])")
+}
+
+###############################################################################
+# Activate the named virtualenv for the current shell session
 #
 # Args
 #   1) Name of the virtualenv to activate
 ###############################################################################
 activate()
 {
-    source $VENV_ROOT/$1/bin/activate && rezsh
+    source $VENV_PATH/$1/bin/activate
 }
 
 ###
