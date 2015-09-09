@@ -8,17 +8,24 @@
   command: "sh -c '$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)'"
   when: ohmyzsh_conf.stat.exists == False
 
+- name: Ensure oh-my-zsh Custom Themes Directory Exists
+  file:
+    path="{{ home }}/.oh-my-zsh/custom/themes/"
+    state=directory
+    owner={{ user }}
+    group={{ group }}
+
 - name: Put Custom Theme in Place
   copy:
     src=jnappi.zsh-theme
     dest="{{ home }}/.oh-my-zsh/custom/themes/jnappi.zsh-theme"
     owner={{ user }}
-    group=staff
+    group={{ group }}
 
 - name: Setup .zshrc
   template:
     src=zshrc.j2
     dest="{{ home }}/.zshrc"
     owner={{ user }}
-    group=staff
+    group={{ group }}
     mode=0644
