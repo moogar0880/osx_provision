@@ -1,13 +1,13 @@
 ---
 
 homebrew_packages:
+  - caskroom/cask/brew-cask
   - python
   - python3
   - boost
   - libevent
   - pkg-config
   - tmux
-  - autoconf
   - gettext
   - ssh-copy-id
   - cowsay
