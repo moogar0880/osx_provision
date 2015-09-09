@@ -83,9 +83,32 @@ export VIRTUAL_ENV_DISABLE_PROMPT=true
 ###############################################################################
 venvs()
 {
-	if [[ "$1" == "-l" ]]; then
+	# Set default values for LIST and LIST_VERSION commandline flags
+	LIST=false
+	LIST_VERSION=false
+
+	# Parse provided commandline flags. If we received an accepted flag, set
+	# it's associated variable accordingly.
+	for i in "$@"
+	do
+	case $i in
+	    -l)
+	    LIST=true
+	    shift # past argument with no value
+	    ;;
+	    -lv)
+	    LIST_VERSION=true
+	    shift # past argument with no value
+	    ;;
+	    *)
+	          # unknown option
+	    ;;
+	esac
+	done
+
+	if [ $LIST = true ]; then
 		command ls -l "$VENV_PATH"  | grep $USER | awk '{print $NF}'
-	elif [[ "$1" == "-lv" ]]; then
+	elif [ $LIST_VERSION = true ]; then
 		venvs -l | while read venv; do echo "$venv - $(print_py_version $venv)"; done
 	else
 		ls "$VENV_PATH"
