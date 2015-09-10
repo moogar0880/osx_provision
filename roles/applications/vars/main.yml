@@ -42,3 +42,9 @@ st3_pcontrol_packages:
   - "Theme - Soda"
   - "Theme - Soda SolarizedDark"
   - "Theme - Sodarized"
+
+###
+### ITerm2 Variables
+###
+iterm_config_dir: "{{ home }}/.iterm2"
+iterm_theme_url: "https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/SpaceGray.itermcolors"

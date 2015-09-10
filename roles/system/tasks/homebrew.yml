@@ -1,0 +1,18 @@
+---
+
+- name: Homebrew | Configure Taps
+  homebrew_tap:
+    tap={{ item }}
+    state=present
+  with_items: homebrew_taps
+  tags: ["packages", "homebrew"]
+
+- name: Homebrew | Update Homebrew
+  homebrew:
+    update_homebrew=yes
+  tags: ["packages", "homebrew"]
+
+- name: Homebrew | Upgrade Installed Packages Packages
+  homebrew:
+    upgrade_all=yes
+  tags: ["packages", "homebrew"]

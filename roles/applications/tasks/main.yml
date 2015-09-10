@@ -1,11 +1,7 @@
 ---
 
-- name: Install Apps From Homebrew (Cask)
-  homebrew_cask:
-    name={{ item }}
-    state=present
-  with_items: homebrew_cask_apps
-  tags: applications
-
 # Install and configure sublime text 3
 - include: sublime.yml
+
+# Install and configure ITerm2
+- include: iterm.yml
