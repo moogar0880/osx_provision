@@ -4,7 +4,6 @@
   homebrew:
     name={{ item }}
     state=present
-    update_homebrew=yes
   with_items: homebrew_packages
   tags: ["packages", "system"]
 
@@ -12,6 +11,5 @@
   homebrew:
     name={{ item }}
     state=present
-    update_homebrew=yes
   with_items: homebrew_python_packages
   tags: ["packages", "python"]
