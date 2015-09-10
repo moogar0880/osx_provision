@@ -1,0 +1,34 @@
+---
+
+- name: ITerm2 | Install | Ensure ITerm2 is Installed
+  homebrew_cask:
+    name="iterm2"
+    state=present
+  tags: ["applications", "iterm"]
+
+- name: ITerm2 | Config | Ensure ITerm2 Config Directory Exists
+  file:
+    dest="{{ iterm_config_dir }}"
+    state=directory
+    owner={{ user }}
+    group={{ group }}
+  tags: ["applications", "iterm"]
+
+# Will only downlaod the iterm color scheme once (since I specify) a file
+# for dest. The actual Iterm2 Config houses all of the data in here, but
+# it might be nice to have the current theme kicking around somewhere.
+- name: ITerm2 | Config | Download ITerm2 Scheme
+  get_url:
+    url="{{ iterm_theme_url }}"
+    dest="{{ iterm_config_dir }}/SpaceGray.itermcolors"
+    owner={{ user }}
+    group={{ group }}
+  tags: ["applications", "iterm"]
+
+- name: ITerm2 | Config | Put ITerm2 Config in Place
+  copy:
+    src="com.googlecode.iterm2.plist"
+    dest="{{ iterm_config_dir }}"
+    owner={{ user }}
+    group={{ group }}
+  tags: ["applications", "iterm"]
