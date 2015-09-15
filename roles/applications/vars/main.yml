@@ -5,22 +5,27 @@
 ###
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - dropbox
-  - google-chrome
-  - handbrake
-  - menumeters
-  - skype
-  - sublime-text3
-  - vlc
-  - pycharm
-  - flux
-  - onyx
-  - spotify
-  - google-drive
+  - airvpn
   - appcleaner
+  - dropbox
   - disk-inventory-x
-  - shiftit
+  - flux
+  - google-chrome
+  - google-drive
+  - handbrake
   - iterm2
+  - menumeters
+  - onyx
+  - pycharm
+  - shiftit
+  - skype
+  - spotify
+  - subler
+  - sublercli
+  - sublime-text3
+  - transmission
+  - virtualbox
+  - vlc
 
 ###
 ### Sublime Text 3 Variables
