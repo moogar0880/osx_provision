@@ -9,6 +9,7 @@
     - connection: local
   vars_files:
     - env_vars/main.yml
+    - env_vars/secrets.yml
 
   roles:
     - system

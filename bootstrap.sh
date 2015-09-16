@@ -29,8 +29,8 @@ fi
 mkdir -p ${SRC_DIRECTORY}
 
 # Provision the box
-# ansible-playbook --ask-sudo-pass -i inventory local.yml --connection=local
-ansible-playbook --ask-sudo-pass -i ${ANSIBLE_DIRECTORY}/inventory ${ANSIBLE_DIRECTORY}/local.yml --connection=local
+# ansible-playbook --ask-sudo-pass -i inventory local.yml --connection=local --ask-vault-pass
+ansible-playbook --ask-sudo-pass -i ${ANSIBLE_DIRECTORY}/inventory ${ANSIBLE_DIRECTORY}/local.yml --connection=local  --ask-vault-pass
 
 # Link the casks.
 ~/.bin/link-casks

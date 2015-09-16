@@ -4,7 +4,7 @@
 
 - include: github.yml
 
-- include: virtualenv.yml
+- include: python.yml
 
 - include: golang.yml
 

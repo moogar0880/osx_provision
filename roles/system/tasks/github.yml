@@ -1,12 +1,12 @@
 ---
 
-- name: Set Global Git Username
+- name: Github | Configure | Set Global Git Username
   shell: "git config --global user.name '{{ github_username }}'"
 
-- name: Set Global Git Email
+- name: Github | Configure | Set Global Git Email
   shell: "git config --global user.email '{{ github_email}}'"
 
-- name: Download the latest Playbook Version
+- name: Github | Configure | Download the latest Playbook Version
   git:
     repo: "{{ git_repo }}"
     dest: "{{ playbook_path }}"

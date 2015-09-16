@@ -1,6 +1,6 @@
 ---
 
-- name: Add Directory for go get-ing packages (GOPATH)
+- name: Golang | Configure | Add Directory for go get-ing packages (GOPATH)
   file:
     path="{{ home }}/.go-packages"
     state=directory

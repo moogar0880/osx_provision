@@ -6,6 +6,7 @@ homebrew_packages:
   - cowsay
   - docker
   - docker-machine
+  - git
   - gettext
   - go
   - hg
@@ -20,6 +21,7 @@ homebrew_packages:
   - readline
   - ssh-copy-id
   - tmux
+  - tree
   - wget
   - zsh
 

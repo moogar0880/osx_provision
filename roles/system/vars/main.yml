@@ -5,6 +5,9 @@ homebrew_taps:
   - caskroom/versions
   - homebrew/binary
 
+###
+### Github Vars
+###
 github_username: moogar0880
 github_email: moogar0880@gmail.com
 # git_repo: ssh://git@github.com/moogar0880/osx_provision.git
@@ -15,3 +18,9 @@ playbook_path: "{{ home }}/.deploy"
 
 # The hourly cronjob to run
 cron_job: "ansible-playbook -i {{ playbook_path }}/inventory {{ playbook_path }}/local.yml --connection=local"
+
+###
+### Python Variables
+###
+virtualenv_path: "{{ home }}/.virtualenvs"
+pypi_username: moogar0880
