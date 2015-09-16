@@ -21,6 +21,9 @@ export DEFAULT_PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/
 export PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:$DEFAULT_PATH:/usr/local/opt/go/libexec/bin:/usr/local/Cellar/pkg-config/0.28/bin"
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/local/Library/ENV/pkgconfig/10.9:/usr/local/opt/python3/Frameworks/Python.framework/Versions/3.4/lib/pkgconfig:/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/pkgconfig
 
+# Echo the octal permissions for the specified file
+alias octal="stat -f %Mp%Lp"
+
 ###############################################################################
 # Re-source $ZSHRC, maintaining the current python $VIRTUAL_ENV variable, if
 # one is set.
@@ -171,3 +174,21 @@ alias gc="git commit"
 alias gcm="git commit -m"
 alias pull="git pull"
 alias push="git push"
+
+###############################################################################
+# Fetch the specified Pull Request for the current repository into the
+# specified local branch. Then checkout the newly fetched pull request.
+#
+# Args
+#   1) The ID of the pull request to pull down
+#	2) The Name of the branch to check the PR out as locally
+###############################################################################
+gpr()
+{
+	local pr_id=$1
+	local branch_name=$2
+
+	git fetch --all
+	git fetch origin pull/$pr_id/head:$branch_name
+	git checkout $branch_name
+}

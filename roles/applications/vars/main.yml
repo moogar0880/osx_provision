@@ -24,8 +24,16 @@ homebrew_cask_apps:
   - sublercli
   - sublime-text3
   - transmission
+  - the-unarchiver
+  - vagrant
   - virtualbox
   - vlc
+  # Quicklook Enhancements
+  - qlcolorcode
+  - qlstephen
+  - quicklook-json
+  - qlprettypatch
+  - qlimagesize
 
 ###
 ### Sublime Text 3 Variables

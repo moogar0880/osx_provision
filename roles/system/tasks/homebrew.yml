@@ -12,7 +12,11 @@
     update_homebrew=yes
   tags: ["packages", "homebrew"]
 
-- name: Homebrew | Upgrade Installed Packages Packages
+- name: Homebrew | Upgrade Installed Packages
   homebrew:
     upgrade_all=yes
+  tags: ["packages", "homebrew"]
+
+- name: Homebrew | Link Installed Packages
+  command: brew linkapps
   tags: ["packages", "homebrew"]

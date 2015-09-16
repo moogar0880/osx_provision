@@ -1,6 +1,6 @@
 ---
 
-- name: Install Apps From Homebrew (Cask)
+- name: Homebrew Cask | Install | Install Homebrew Cask Apps
   homebrew_cask:
     name={{ item }}
     state=present

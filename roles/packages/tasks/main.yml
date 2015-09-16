@@ -1,13 +1,13 @@
 ---
 
-- name: Install Homebrew System Packages
+- name: Homebrew | Install | System Packages
   homebrew:
     name={{ item }}
     state=present
   with_items: homebrew_packages
   tags: ["packages", "system"]
 
-- name: Install Homebrew Python Packages
+- name: Homebrew | Install | Python Packages
   homebrew:
     name={{ item }}
     state=present
