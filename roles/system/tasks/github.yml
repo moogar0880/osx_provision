@@ -1,12 +1,25 @@
 ---
 
-- name: Github | Configure | Set Global Git Username
+- name: Git | Install | Install Homebrew Git
+  homebrew:
+    name=git
+    state=present
+    install_options="without-completions"
+  tags: ["git"]
+
+- name: Git | Configure | Set Global Git Username
   shell: "git config --global user.name '{{ github_username }}'"
+  tags: ["git"]
 
-- name: Github | Configure | Set Global Git Email
+- name: Git | Configure | Set Global Git Email
   shell: "git config --global user.email '{{ github_email}}'"
+  tags: ["git"]
 
-- name: Github | Configure | Download the latest Playbook Version
+- name: Git | Configure | Set Global Git Credeitnal Helper
+  shell: "git config --global credential.helper osxkeychain"
+  tags: ["git"]
+
+- name: Git | Configure | Download the latest Playbook Version
   git:
     repo: "{{ git_repo }}"
     dest: "{{ playbook_path }}"
@@ -14,3 +27,4 @@
     update: yes
     accept_hostkey: yes
     version: "master"
+  tags: ["git"]
