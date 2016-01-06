@@ -11,10 +11,10 @@
   register: ohmyzsh_conf
   tags: ["zsh", "settings", "oh-my-zsh"]
 
-- name: ZSH | Install | Ensure oh-my-zsh is Installed
-  command: "sh -c '$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)'"
-  when: ohmyzsh_conf.stat.exists == False
-  tags: ["zsh", "settings", "oh-my-zsh"]
+# - name: ZSH | Install | Ensure oh-my-zsh is Installed
+#   command: "sh -c '$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)'"
+#   when: ohmyzsh_conf.stat.exists == False
+#   tags: ["zsh", "settings", "oh-my-zsh"]
 
 - name: ZSH | Configure | Ensure oh-my-zsh Custom Themes Directory Exists
   file:

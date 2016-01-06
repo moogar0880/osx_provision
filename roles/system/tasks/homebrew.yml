@@ -1,6 +1,14 @@
 ---
 
-- name: Homebrew | Configure Taps
+- name: Homebrew | Configure | Permissions
+  file:
+    path="/usr/local"
+    state=directory
+    owner={{ user }}
+    group={{ group }}
+  tags: ["homebrew"]
+
+- name: Homebrew | Configure | Taps
   homebrew_tap:
     tap={{ item }}
     state=present
