@@ -2,8 +2,7 @@
 
 - name: Provision an OS X system
   hosts: all
-  sudo: yes
-  sudo_user: "{{ user }}"
+  become_user: root
   remote_user: "{{ user }}"
   vars:
     - connection: local
@@ -16,3 +15,4 @@
     - packages
     - applications
     - settings
+    - atom

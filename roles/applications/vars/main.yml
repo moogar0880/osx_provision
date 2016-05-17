@@ -36,27 +36,6 @@ homebrew_cask_apps:
   - qlimagesize
 
 ###
-### Sublime Text 3 Variables
-###
-st3_path: "{{ home }}/Library/Application Support/Sublime Text 3"
-st3_user_path: "{{ st3_path }}/Packages/User"
-st3_installed_path: "{{ st3_path }}/Installed Packages"
-st3_pcontrol_url: "https://packagecontrol.io/Package Control.sublime-package"
-st3_pcontrol_packages:
-  - Ansible
-  - Better CoffeeScript
-  - Dockerfile Syntax Highlighting
-  - GoSublime
-  - LESS
-  - Package Control
-  - Predawn
-  - SideBarEnhancements
-  - SublimeCodeIntel
-  - "Theme - Soda"
-  - "Theme - Soda SolarizedDark"
-  - "Theme - Sodarized"
-
-###
 ### ITerm2 Variables
 ###
 iterm_config_dir: "{{ home }}/.iterm2"

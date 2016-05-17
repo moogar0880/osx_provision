@@ -2,14 +2,7 @@
 
 - name: Homebrew | Install | System Packages
   homebrew:
-    name={{ item }}
+    name="{{ item }}"
     state=present
-  with_items: homebrew_packages
+  with_items: "{{ homebrew_packages }}"
   tags: ["packages", "system"]
-
-- name: Homebrew | Install | Python Packages
-  homebrew:
-    name={{ item }}
-    state=present
-  with_items: homebrew_python_packages
-  tags: ["packages", "python"]

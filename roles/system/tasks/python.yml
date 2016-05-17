@@ -24,15 +24,15 @@
   file:
     path="{{ virtualenv_path }}"
     state=directory
-    owner={{ user }}
-    group={{ group }}
+    owner="{{ user }}"
+    group="{{ group }}"
   tags: ["system", "python"]
 
 - name: Python | Configure | Create .pypirc
   template:
     src=pypirc.j2
     dest="{{ home }}/.pypirc"
-    owner={{ user }}
-    group={{ group }}
+    owner="{{ user }}"
+    group="{{ group }}"
     mode=0600
   tags: ["system", "python"]

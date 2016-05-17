@@ -1,0 +1,37 @@
+---
+atom_config_dir: "{{ home }}/.atom"
+atom_packages:
+  - name: autocomplete-go
+    version: 1.1.0
+  - name: autocomplete-python
+    version: 1.7.2
+  - name: builder-go
+    version: 1.0.0
+  - name: go-config
+    version: 1.1.4
+  - name: go-get
+    version: 1.0.3
+  - name: go-plus
+    version: 4.1.0
+  - name: gofmt
+    version: 1.1.6
+  - name: gometalinter-linter
+    version: 1.1.0
+  - name: gorename
+    version: 1.0.2
+  - name: language-python-django-templates
+    version: 0.1.0
+  - name: linter
+    version: 1.11.4
+  - name: linter-python-pep8
+    version: 0.2.0
+  - name: linter-python-pyflakes
+    version: 0.1.0
+  - name: linter-shellcheck
+    version: 1.2.0
+  - name: navigator-godef
+    version: 1.0.3
+  - name: python-tools
+    version: 0.6.7
+  - name: tester-go
+    version: 1.0.4

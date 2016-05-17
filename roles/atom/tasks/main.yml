@@ -1,0 +1,24 @@
+---
+- name: Atom | Config | Ensure Atom Config Directory Exists
+  file:
+    dest="{{ atom_config_dir }}"
+    state=directory
+    owner="{{ user }}"
+    group="{{ group }}"
+  tags: ["applications", "atom"]
+
+- name: Atom | Config | Put Atom Config in Place
+  copy:
+    src="config.cson"
+    dest="{{ atom_config_dir }}"
+    owner="{{ user }}"
+    group="{{ group }}"
+  tags: ["applications", "atom"]
+
+- name: Atom | Install | Packages
+  apm:
+    name: "{{ item.name }}"
+    version: "{{ item.version }}"
+    state: present
+  with_items: "{{ atom_packages }}"
+  tags: ["applications", "atom"]

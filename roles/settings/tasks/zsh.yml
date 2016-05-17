@@ -7,36 +7,36 @@
   tags: ["packages", "zsh"]
 
 - name: ZSH | Install | Check if oh-my-zsh is Installed
-  stat: path={{ home }}.oh-my-zsh
+  stat: path="{{ home }}/.oh-my-zsh"
   register: ohmyzsh_conf
   tags: ["zsh", "settings", "oh-my-zsh"]
 
-# - name: ZSH | Install | Ensure oh-my-zsh is Installed
-#   command: "sh -c '$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)'"
-#   when: ohmyzsh_conf.stat.exists == False
-#   tags: ["zsh", "settings", "oh-my-zsh"]
+- name: ZSH | Install | Ensure oh-my-zsh is Installed
+  command: "sh -c '$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)'"
+  when: ohmyzsh_conf.stat.exists == False
+  tags: ["zsh", "settings", "oh-my-zsh"]
 
 - name: ZSH | Configure | Ensure oh-my-zsh Custom Themes Directory Exists
   file:
     path="{{ home }}/.oh-my-zsh/custom/themes/"
     state=directory
-    owner={{ user }}
-    group={{ group }}
+    owner="{{ user }}"
+    group="{{ group }}"
   tags: ["zsh", "settings", "oh-my-zsh"]
 
 - name: ZSH | Configure | Put Custom Theme in Place
   copy:
     src=jnappi.zsh-theme
     dest="{{ home }}/.oh-my-zsh/custom/themes/jnappi.zsh-theme"
-    owner={{ user }}
-    group={{ group }}
+    owner="{{ user }}"
+    group="{{ group }}"
   tags: ["zsh", "settings", "oh-my-zsh"]
 
 - name: ZSH | Configure | Setup .zshrc
   template:
     src=zshrc.j2
     dest="{{ home }}/.zshrc"
-    owner={{ user }}
-    group={{ group }}
+    owner="{{ user }}"
+    group="{{ group }}"
     mode=0600
   tags: ["zsh", "settings", "oh-my-zsh"]

@@ -17,15 +17,15 @@ setopt noglobalrcs
 
 # Set the preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='subl --wait'
+  export EDITOR='atom'
 else
-  export EDITOR='subl --wait'
+  export EDITOR='atom'
 fi
 
 alias apro="ansible-playbook --ask-sudo-pass -i inventory local.yml --connection=local --ask-vault-pass"
 
 export DEFAULT_PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin"
-export PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:$DEFAULT_PATH:/usr/local/opt/go/libexec/bin:/usr/local/Cellar/pkg-config/0.28/bin"
+export PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${DEFAULT_PATH}:/usr/local/opt/go/libexec/bin:/usr/local/Cellar/pkg-config/0.28/bin"
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/local/Library/ENV/pkgconfig/10.9:/usr/local/opt/python3/Frameworks/Python.framework/Versions/3.4/lib/pkgconfig:/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/pkgconfig
 
 # Echo the octal permissions for the specified file
@@ -40,14 +40,14 @@ alias octal="stat -f %Mp%Lp"
 ###############################################################################
 rezsh()
 {
-	if [ -n "$VIRTUAL_ENV" ]; then
+	if [ -n "${VIRTUAL_ENV}" ]; then
 		# shellcheck disable=SC1090
-		source "$ZSHRC"
+		source "${ZSHRC}"
     	# shellcheck disable=SC1090
-		source "$VIRTUAL_ENV/bin/activate"
+		source "${VIRTUAL_ENV}/bin/activate"
 	else
 		# shellcheck disable=SC1090
-		source "$ZSHRC"
+		source "${ZSHRC}"
 	fi
 }
 
@@ -65,7 +65,7 @@ export ZSH_THEME="jnappi"
 plugins=(git osx homebrew)
 
 # shellcheck disable=SC1090
-source "$ZSH/oh-my-zsh.sh"
+source "${ZSH}/oh-my-zsh.sh"
 
 # Enable the accessing of online ZSH help documentation
 unalias run-help &>/dev/null
@@ -73,14 +73,23 @@ autoload run-help
 export HELPDIR=/usr/local/share/zsh/help
 
 ###
+### ZSH Autosuggestions Configurations
+###
+# Color to use when highlighting suggestion
+# Uses format of `region_highlight`
+# More info: http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Zle-Widgets
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=yellow'
+
+###
 ### Golang configuration
 ###
-export GOPATH=$HOME/.go-packages
+export GOPATH="${HOME}/.go-packages"
 
 ###
 ### Virtualenv Settings
 ###
-export VENV_PATH=$HOME/.virtualenvs
+export VENV_PATH="${HOME}/.virtualenvs"
 
 # Setting $VIRTUAL_ENV_DISABLE_PROMPT disables the default virtualenv prompt
 # from appearing to the left of your shell prompt.
@@ -121,12 +130,12 @@ venvs()
 	esac
 	done
 
-	if [ $LIST = true ]; then
-		command ls -l "$VENV_PATH"  | grep "$USER" | awk '{print $NF}'
-	elif [ $LIST_VERSION = true ]; then
+	if [ ${LIST} = true ]; then
+		command ls -l "${VENV_PATH}"  | grep "${USER}" | awk '{print $NF}'
+	elif [ ${LIST_VERSION} = true ]; then
 		venvs -l | while read -r venv; do echo "$venv - $(print_py_version "$venv")"; done
 	else
-		ls "$VENV_PATH"
+		ls "${VENV_PATH}"
 	fi
 }
 
@@ -144,7 +153,7 @@ venvs()
 print_py_version()
 {
 	local venv_name=$1
-	"$VENV_PATH/$venv_name/bin/python" -c "import sys; print(sys.version.split()[0])"
+	"${VENV_PATH}/$venv_name/bin/python" -c "import sys; print(sys.version.split()[0])"
 }
 
 ###############################################################################
@@ -156,15 +165,15 @@ print_py_version()
 activate()
 {
     # shellcheck disable=SC1090
-    source "$VENV_PATH/$1/bin/activate"
+    source "${VENV_PATH}/$1/bin/activate"
 }
 
 ###
 ### ZSH Configuration
 ###
-export ZSHRC="$HOME/.zshrc"
-alias zedit='atom ${ZSHRC}'
-alias ohmyzsh='${EDITOR} $HOME/.oh-my-zsh'
+export ZSHRC="${HOME}/.zshrc"
+alias zedit="${EDITOR} ${ZSHRC}"
+alias ohmyzsh="${EDITOR} $HOME/.oh-my-zsh"
 
 ###
 ### Docker Configuration

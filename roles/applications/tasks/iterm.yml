@@ -10,8 +10,8 @@
   file:
     dest="{{ iterm_config_dir }}"
     state=directory
-    owner={{ user }}
-    group={{ group }}
+    owner="{{ user }}"
+    group="{{ group }}"
   tags: ["applications", "iterm"]
 
 # Will only downlaod the iterm color scheme once (since I specify) a file
@@ -21,14 +21,14 @@
   get_url:
     url="{{ iterm_theme_url }}"
     dest="{{ iterm_config_dir }}/SpaceGray.itermcolors"
-    owner={{ user }}
-    group={{ group }}
+    owner="{{ user }}"
+    group="{{ group }}"
   tags: ["applications", "iterm"]
 
 - name: ITerm2 | Config | Put ITerm2 Config in Place
   copy:
     src="com.googlecode.iterm2.plist"
     dest="{{ iterm_config_dir }}"
-    owner={{ user }}
-    group={{ group }}
+    owner="{{ user }}"
+    group="{{ group }}"
   tags: ["applications", "iterm"]

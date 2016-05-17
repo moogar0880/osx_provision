@@ -7,5 +7,5 @@
     minute="0"
     job="{{ cron_job }}"
     user=root
-  sudo: yes
-  sudo_user: root
+  become: yes
+  become_user: root

@@ -2,31 +2,22 @@
 
 homebrew_packages:
   - boost
-  - cowsay
+  - diff-so-fancy
   - docker
+  - docker-compose
   - docker-machine
   - gettext
   - go
-  - hg
   - htop-osx
-  - hub
-  - ios-sim
-  - libevent
   - openssl
   - pkg-config
   - pv
-  - python
-  - python3
   - readline
   - shellcheck
   - ssh-copy-id
   - tmux
+  - translate-shell
   - tree
   - wget
   - zsh
-
-homebrew_python_packages:
-  - libjpeg
-  - libtiff
-  - little-cms2
-  - webp
+  - zsh-autosuggestions
