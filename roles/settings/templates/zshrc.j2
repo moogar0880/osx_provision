@@ -25,7 +25,7 @@ fi
 alias apro="ansible-playbook --ask-sudo-pass -i inventory local.yml --connection=local --ask-vault-pass"
 
 export DEFAULT_PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin"
-export PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${DEFAULT_PATH}:/usr/local/opt/go/libexec/bin:/usr/local/Cellar/pkg-config/0.28/bin"
+export PATH="${DEFAULT_PATH}:/usr/local/opt/go/libexec/bin:/usr/local/Cellar/pkg-config/0.28/bin"
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/local/Library/ENV/pkgconfig/10.9:/usr/local/opt/python3/Frameworks/Python.framework/Versions/3.4/lib/pkgconfig:/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/pkgconfig
 
 # Echo the octal permissions for the specified file
@@ -85,6 +85,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=yellow'
 ### Golang configuration
 ###
 export GOPATH="${HOME}/.go-packages"
+export PATH="${PATH}:${GOPATH}/bin"
 
 ###
 ### Virtualenv Settings
