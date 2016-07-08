@@ -22,7 +22,6 @@ homebrew_cask_apps:
   - spotify
   - subler
   - sublercli
-  - sublime-text3
   - transmission
   - the-unarchiver
   - vagrant
