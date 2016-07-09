@@ -117,7 +117,6 @@ class APM(object):
         """Return a list of the currently installed packages"""
         cmd = ['apm', 'list', '--installed', '--bare']
         rc, out, err = self.run_command(cmd)
-        self.__module.debug('{rc}, {out}, {err}'.format(rc=rc, out=out, err=err))
 
         if rc != 0:
             self.fail(changed=self.changed, msg=err.strip())
@@ -137,10 +136,6 @@ class APM(object):
         pkg_name = self._get_package_name(name, version)
         cmd = ['apm', 'install', pkg_name]
         rc, out, err = self.run_command(cmd)
-
-        _n = 'debug.%s' % str(name)
-        with open(_n, 'w') as f:
-            f.write('{rc}, {out}, {err}'.format(rc=rc, out=out, err=err))
 
         if rc != 0:
             self.fail(changed=False, msg=err.strip())
@@ -194,8 +189,6 @@ def main():
         ),
         supports_check_mode=True,
     )
-    module._debug = True
-
     apm = APM(module)
     name, version = apm.params['name'], apm.params['version']
 
