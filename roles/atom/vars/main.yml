@@ -19,8 +19,6 @@ atom_packages:
     version: 1.1.0
   - name: gorename
     version: 1.0.2
-  - name: language-python-django-templates
-    version: 0.1.0
   - name: linter
     version: 1.11.4
   - name: linter-python-pep8
