@@ -15,6 +15,10 @@ CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 # distribution.
 setopt noglobalrcs
 
+# This option instructs zsh to not prompt when deleting directories/files with
+# wildcard's in the path
+setopt rmstarsilent
+
 # Set the preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='atom'
@@ -62,7 +66,7 @@ export ZSH_THEME="jnappi"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # shellcheck disable=SC2034
-plugins=(git osx homebrew)
+plugins=(git osx homebrew docker)
 
 # shellcheck disable=SC1090
 source "${ZSH}/oh-my-zsh.sh"
@@ -173,21 +177,15 @@ activate()
 ### ZSH Configuration
 ###
 export ZSHRC="${HOME}/.zshrc"
+# shellcheck disable=SC2139
 alias zedit="${EDITOR} ${ZSHRC}"
+# shellcheck disable=SC2139
 alias ohmyzsh="${EDITOR} $HOME/.oh-my-zsh"
-
-###
-### Docker Configuration
-###
-export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://192.168.99.100:2376"
-export DOCKER_CERT_PATH="/Users/Jon/.docker/machine/machines/dev"
-export DOCKER_MACHINE_NAME="dev"
 
 ###
 ### Homebrew Aliases
 ###
-alias bup="brew update && brew cask update && brew upgrade --all && brew cleanup"
+alias bup="brew update && brew cask update && brew upgrade && brew cleanup"
 
 ###
 ### Git Aliases

@@ -109,8 +109,7 @@ class APM(object):
         """
         if version is None:
             return name
-        else:
-            return '{name}@{version}'.format(name=name, version=version)
+        return '{name}@{version}'.format(name=name, version=version)
 
     @property
     def installed_packages(self):
@@ -173,6 +172,7 @@ def main():
             version=dict(
                 required=False,
                 type='str',
+                default=None,
             ),
             state=dict(
                 default='present',

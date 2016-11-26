@@ -30,7 +30,6 @@
 - name: Atom | Install | Packages
   apm:
     name: "{{ item.name }}"
-    version: "{{ item.version }}"
     state: present
   with_items: "{{ atom_packages }}"
   tags:
