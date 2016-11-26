@@ -2,9 +2,6 @@
 
 set -e
 
-SRC_DIRECTORY="$HOME/.deploy"
-ANSIBLE_DIRECTORY="$SRC_DIRECTORY/osx_provision"
-
 # Download and install Command Line Tools
 if [[ ! -x /usr/bin/gcc ]]; then
     echo "Info   | Install   | xcode"
@@ -25,15 +22,8 @@ if [[ ! -x /usr/local/bin/ansible ]]; then
     brew install ansible
 fi
 
-# Make the code directory
-mkdir -p ${SRC_DIRECTORY}
-
 # Provision the box
-# ansible-playbook --ask-become-pass -i inventory local.yml --connection=local --ask-vault-pass
-ansible-playbook --ask-become-pass -i ${ANSIBLE_DIRECTORY}/inventory ${ANSIBLE_DIRECTORY}/local.yml --connection=local  --ask-vault-pass
-
-# Link the casks.
-~/.bin/link-casks
+ansible-playbook --ask-become-pass -i inventory local.yml --connection=local --ask-vault-pass
 
 # Change the default shell for $USER
 #

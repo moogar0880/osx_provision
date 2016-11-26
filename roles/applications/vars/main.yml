@@ -7,6 +7,7 @@ homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - airvpn
   - appcleaner
+  - docker
   - dropbox
   - disk-inventory-x
   - flux
@@ -14,7 +15,6 @@ homebrew_cask_apps:
   - google-drive
   - handbrake
   - iterm2
-  - menumeters
   - onyx
   - pycharm
   - shiftit
@@ -27,6 +27,7 @@ homebrew_cask_apps:
   - vagrant
   - virtualbox
   - vlc
+  - wmail
   # Quicklook Enhancements
   - qlcolorcode
   - qlstephen
