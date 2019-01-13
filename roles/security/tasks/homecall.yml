@@ -1,0 +1,14 @@
+---
+- name: homecall | launchd | Disable homecall agents
+  launchd:
+    name: "{{ item }}"
+    state: unloaded
+  become: yes
+  with_items: "{{ homecall_agents }}"
+
+- name: homecall | launchd | Disable homecall daemons
+  launchd:
+    name: "{{ item }}"
+    state: unloaded
+  become: yes
+  with_items: "{{ homecall_daemons }}"

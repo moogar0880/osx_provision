@@ -1,0 +1,33 @@
+---
+- name: GPG | Install | Install gnupg2
+  homebrew:
+    name: gnupg2
+    state: present
+
+- name: GPG | Install | Install gpgtools
+  homebrew_cask:
+    name: gpgtools
+    state: present
+
+- name: GPG | Configure | Ensure gnupg2 directory exists
+  file:
+    path: "{{ home }}/.gnupg"
+    state: directory
+
+- name: GPG | Configure | Configure gnupg2
+  copy:
+    src: gpg.conf
+    dest: "{{ home }}/.gnupg/gpg.conf"
+
+- name: GPG | Configure | Check Keyserver CA
+  stat: path="/etc/sks-keyservers.netCA.pem"
+  register: keyserver_ca_file
+
+- name: GPG | Configure | Get Keyserver CA
+  get_url:
+    url: "https://sks-keyservers.net/sks-keyservers.netCA.pem"
+    dest: /etc/sks-keyservers.netCA.pem
+    mode: 0440
+    follow: yes
+  when: keyserver_ca_file.stat.exists == False
+  become: yes

@@ -2,17 +2,21 @@
 
 homebrew_packages:
   - boost
+  - cargo-completion
   - diff-so-fancy
   - docker
   - docker-compose
   - docker-machine
+  - exa
   - gettext
   - go
   - htop-osx
   - openssl
+  - neovim
   - pkg-config
   - pv
   - readline
+  - rustup-init
   - shellcheck
   - ssh-copy-id
   - tmux
@@ -21,3 +25,4 @@ homebrew_packages:
   - wget
   - zsh
   - zsh-autosuggestions
+  - zsh-syntax-highlighting

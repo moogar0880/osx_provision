@@ -1,0 +1,49 @@
+---
+- name: DNS | Install | Install dnsmasq
+  homebrew:
+    name: dnsmasq
+    state: present
+    install_options: "with-dnssec"
+
+- name: DNS | Install | Install dnscrypt
+  homebrew:
+    name: dnscrypt-proxy
+    state: present
+
+- name: DNS | Configure | Configure dnsmasq
+  copy:
+    src: dnsmasq.conf
+    dest: /usr/local/etc/dnsmasq.conf
+
+- name: DNS | Service | Run dnsmasq
+  brew_service:
+    name: dnsmasq
+    state: started
+  become: yes
+
+- name: DNS | Config | Determine Local Resolver
+  command: networksetup -getdnsservers "Wi-Fi"
+  register: wifi_resolver
+  ignore_errors: yes
+  become: yes
+
+- name: Debug
+  debug:
+    var: wifi_resolver
+
+- name: DNS | Config | Set Local Resolver
+  command: networksetup -setdnsservers "Wi-Fi" 127.0.0.1
+  become: yes
+  when: wifi_resolver.rc != 0 or wifi_resolver.stdout != '127.0.0.1'
+
+# recusively find the dnscrypt-proxy config plist
+- name: DNS | Config | Put dnscrypt-proxy config in place
+  copy:
+    src: dnscrypt-proxy.conf
+    dest: /usr/local/etc/dnscrypt-proxy.conf
+
+- name: DNS | Service | Run dnscrypt-proxy
+  brew_service:
+    name: dnscrypt-proxy
+    state: started
+  become: yes
