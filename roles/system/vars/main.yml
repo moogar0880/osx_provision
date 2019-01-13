@@ -4,6 +4,7 @@ homebrew_taps:
   - caskroom/cask
   - caskroom/versions
   - homebrew/binary
+  - homebrew/cask-fonts
 
 ###
 ### Github Vars
@@ -24,3 +25,7 @@ cron_job: "ansible-playbook -i {{ playbook_path }}/inventory {{ playbook_path }}
 ###
 virtualenv_path: "{{ home }}/.virtualenvs"
 pypi_username: moogar0880
+
+font_casks:
+  - font-source-code-pro-for-powerline
+  - font-menlo-for-powerline
