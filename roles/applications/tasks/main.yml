@@ -9,3 +9,6 @@
 
 # Install and configure ITerm2
 - include: iterm.yml
+
+# Configure firefox profile
+- include: firefox.yml

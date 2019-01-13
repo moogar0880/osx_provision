@@ -1,0 +1,17 @@
+---
+
+- name: GPG | Configure | Check user.js
+  stat: path="{{ home }}/Library/Application Support/Firefox/Profiles/profile.secure"
+  register: firefox_user_js
+  become: yes
+  tags: [applications, firefox]
+
+- name: Firefox | Configure | Get user.js
+  get_url:
+    url: "https://raw.githubusercontent.com/pyllyukko/user.js/master/user.js"
+    dest: "{{ home }}/Library/Application Support/Firefox/Profiles/profile.secure"
+    mode: 0440
+    follow: yes
+  when: firefox_user_js.stat.exists == False
+  become: yes
+  tags: [applications, firefox]
