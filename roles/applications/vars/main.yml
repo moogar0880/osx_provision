@@ -6,19 +6,30 @@
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   # TODO: (moogar0880) the brew install for this package appears to be broken
-  # - airvpn
+  # - airvpn  # eddie
+  - alfred
   - appcleaner
+  - bettertouchtool
+  - caffeine
+  - calibre
+  - ckb-next
+  - dash
   - docker
   - dropbox
   - disk-inventory-x
+  - flame
   - flux
+  - goland
   - google-chrome
   - google-drive
+  - firefox
+  - hammerspoon
   - handbrake
   - iterm2
+  - keepassxc
   - onyx
+  - plex-media-server
   - pycharm
-  - shiftit
   - skype
   - spotify
   - subler
@@ -27,6 +38,7 @@ homebrew_cask_apps:
   - the-unarchiver
   - vagrant
   - virtualbox
+  - visual-studio-code
   - vlc
   - wmail
   # Quicklook Enhancements
