@@ -12,7 +12,7 @@
 
   roles:
     - system
+    - security
     - packages
     - applications
     - settings
-    - atom
