@@ -1,0 +1,20 @@
+---
+- include: homecall.yml
+  tags:
+    - security
+    - homecall
+
+- include: dns.yml
+  tags:
+    - security
+    - dns
+
+- include: packages.yml
+  tags:
+    - security
+    - packages
+
+- include: gpg.yml
+  tags:
+    - security
+    - gpg

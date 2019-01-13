@@ -1,0 +1,11 @@
+---
+- name: Packages | Install | openssl
+  homebrew:
+    name: openssl
+    state: present
+
+- name: Packages | Install | curl
+  homebrew:
+    name: curl
+    state: present
+    install_options: "with-openssl"

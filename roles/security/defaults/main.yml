@@ -1,0 +1,142 @@
+---
+homecall_daemons:
+  # Netbiosd is microsoft's networking service. used to share files between mac and windows
+  - com.apple.netbiosd
+  # Parent controls
+  - com.apple.familycontrols
+  # Feedback - most likely it submits your computer data when click 'About this mac'
+  - com.apple.SubmitDiagInfo
+  # Screensharing daemon
+  - com.apple.screensharing
+  # Related to feedback
+  - com.apple.appleseed.fbahelperd
+  # Apple Wide Area Connectivity Service daemon - Back to My Mac Feature
+  - com.apple.awacsd
+  # Sending out diagnostics & usage
+  - com.apple.awdd
+  # Crash reporter
+  - com.apple.CrashReporterSupportHelper
+  # Time setting daemon
+  # - com.apple.preferences.timezone.admintool
+  # Time setting daemon
+  # - com.apple.preferences.timezone.auto
+  # Pairing devices remotely
+  # - com.apple.remotepairtool
+  # daemon for remote debugging of mobile devices.
+  # - com.apple.rpmuxd
+  #Full Disk Ecnryption - Related to File Vault https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man8/FDERecoveryAgent.8.html
+  # - com.apple.security.FDERecoveryAgent
+  # Related to find my mac
+  # - com.apple.icloud.findmydeviced
+  # Related to find my mac daemon, propably act on commands sent through FindMyDevice in iCloud
+  # - com.apple.findmymacmessenger
+  # Find my mac daemon
+  # - com.apple.findmymac
+  # Airplay daemon
+  # - com.apple.AirPlayXPCHelper
+  # Apple Push Notification Service (apsd) - it's calling home quite often + used by Facetime and Messages
+  # - com.apple.apsd
+  # Notifications
+  # - com.apple.AOSNotificationOSX
+  # Mostlikely sshd on this machine
+  # - com.apple.FileSyncAgent.sshd
+  # Related to manage current macOS user iCloud
+  # - com.apple.ManagedClient.cloudconfigurationd
+  # Related to manage current macOS user
+  # - com.apple.ManagedClient.enroll
+  # Related to manage current macOS user
+  # - com.apple.ManagedClient
+  # Related to manage current macOS user
+  # - com.apple.ManagedClient.startup
+  # Related to iCloud
+  # - com.apple.iCloudStats
+  # Propably reading current location
+  # - com.apple.locationd
+  # iCloud Settings
+  # - com.apple.mbicloudsetupd
+  # Schedule something?
+  # - com.apple.laterscheduler
+  # perform privileged operations required by certain EAPOLClientConfiguration.h APIs
+  # - com.apple.eapolcfg_auth
+  # Propably related to certificates
+  # - com.apple.trustd
+
+homecall_agents:
+  # GameCenter
+  - com.apple.gamed
+  # iCloud Family restrictions
+  - com.apple.cloudfamilyrestrictionsd-mac
+  # Propably syncing your photos to icloud
+  - com.apple.cloudphotosd
+  # Dictation
+  - com.apple.DictationIM
+  # Siri
+  - com.apple.assistant_service
+  # Feedback assistant
+  - com.apple.appleseed.seedusaged
+  # Related to parental control
+  - com.apple.parentalcontrols.check
+  # Used by spotlight and/or siri, propably some suggestions - CoreParsec.framework
+  - com.apple.parsecd
+  # Related to Home Sharing, most likely it checks if device is auth for home sharing + Facetime
+  - com.apple.rtcreportingd
+  # Good one, sending out your browsing history... :)
+  - com.apple.SafariCloudHistoryPushAgent
+  # Sending bookmarks to iCloud, even if you disable it may send your bookmarks to Apple
+  - com.apple.safaridavclient
+  # Notifications in Safari
+  - com.apple.SafariNotificationAgent
+  # Apple AI to analyse photos stored in Photos.app, most likely to match faces and scenery but it happens to make requests to Apple during process, i have not checked what are those requestes i have just blocked it with Little Snitch
+  # - com.apple.photoanalysisd
+  # Handling phone and facetime calls
+  # - com.apple.telephonyutilities.callservicesd
+  # Related Airport
+  # - com.apple.AirPlayUIAgent
+  # Related to Airport
+  # - com.apple.AirPortBaseStationAgent
+  # Calendar events related to iCloud
+  # - com.apple.CalendarAgent
+  # iCloud notifications, like reminders
+  # - com.apple.iCloudUserNotifications
+  # Family notifications, like reminders
+  # - com.apple.familycircled
+  # Family notifications, like reminders
+  # - com.apple.familycontrols.useragent
+  # Family notifications, like reminders
+  # - com.apple.familynotificationd
+  # Find my device ?
+  # - com.apple.icloud.findmydeviced.findmydevice-user-agent
+  # Find my device ?
+  # - com.apple.icloud.fmfd
+  # Facetime & Messages
+  # - com.apple.imagent
+  # Related to iCloud
+  # - com.apple.cloudpaird
+  # Related to call history syncing (iCloud)
+  # - com.apple.CallHistorySyncHelper
+  # Related to call history (iCloud)
+  # - com.apple.CallHistoryPluginHelper
+  # Related to iCloud https://github.com/fix-macosx/yosemite-phone-home/blob/master/icloud-user-r0/System/Library/PrivateFrameworks/AOSKit.framework/Versions/A/Helpers/AOSPushRelay.app/Contents/MacOS/AOSPushRelay/20141019T072634Z-auser-%5B172.16.174.146%5D:49560-%5B17.110.240.83%5D:443.log
+  # - com.apple.AOSPushRelay
+  # IMFoundation.framework - Not sure about this one, maybe used to log in to computer on start
+  # - com.apple.IMLoggingAgent
+  # Located in GeoServices.framework, related to locations maybe used for maps, maybe as well for things like find my mac, or just syping
+  # - com.apple.geodMachServiceBridge
+  # Propably related to syncing keychain
+  # - com.apple.syncdefaultsd
+  # Propably related to syncing keychain to icloud
+  # - com.apple.security.cloudkeychainproxy3
+  # Most likely also related to keychain - IDSKeychainSyncingProxy.bundle
+  # - com.apple.security.idskeychainsyncingproxy
+  # Related to keychain
+  # - com.apple.security.keychain-circle-notification
+  # Airdrop, Remote Disks, Shared Directories, Handoff
+  # - com.apple.sharingd
+  # Related to sync data to iCloud, most likely used by iMessage,Mail,iCloud drive, etc...
+  # - com.apple.cloudd
+  # Keychain
+  # - com.apple.assistant
+  # Used to auth some apps, as well used by iCloud
+  # - com.apple.identityservicesd
+  # Part of iCloud
+  # - com.apple.bird
