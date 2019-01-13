@@ -1,0 +1,13 @@
+---
+
+- name: Fonts | Homebrew | Update Homebrew
+  homebrew:
+    update_homebrew=yes
+  tags: ["fonts", "homebrew"]
+
+- name: Fonts | Homebrew | Install Fonts
+  homebrew_cask:
+    name="{{ item }}"
+    state=present
+  with_items: "{{ font_casks }}"
+  tags: fonts
