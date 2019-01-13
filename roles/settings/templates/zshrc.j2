@@ -21,19 +21,28 @@ setopt rmstarsilent
 
 # Set the preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='atom'
+  export EDITOR='nvim'
 else
-  export EDITOR='atom'
+  export EDITOR='nvim'
 fi
 
 alias apro="ansible-playbook --ask-sudo-pass -i inventory local.yml --connection=local --ask-vault-pass"
 
 export DEFAULT_PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin"
 export PATH="${DEFAULT_PATH}:/usr/local/opt/go/libexec/bin:/usr/local/Cellar/pkg-config/0.28/bin"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/local/Library/ENV/pkgconfig/10.9:/usr/local/opt/python3/Frameworks/Python.framework/Versions/3.4/lib/pkgconfig:/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/pkgconfig
 
 # Echo the octal permissions for the specified file
 alias octal="stat -f %Mp%Lp"
+
+# cookiecutter container alias
+alias cookiecutter='docker run --rm -it -v "$(pwd):/mnt" moogar0880/cookiecutter:latest'
+
+# add homebrew's curl to the path, if it's installed
+if [[ -d /usr/local/opt/curl/bin ]]; then
+  export PATH="/usr/local/opt/curl/bin:$PATH"
+fi
 
 ###############################################################################
 # Re-source $ZSHRC, maintaining the current python $VIRTUAL_ENV variable, if
@@ -55,12 +64,6 @@ rezsh()
 	fi
 }
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-export ZSH_THEME="jnappi"
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -72,9 +75,19 @@ plugins=(git osx homebrew docker)
 source "${ZSH}/oh-my-zsh.sh"
 
 # Enable the accessing of online ZSH help documentation
-unalias run-help &>/dev/null
-autoload run-help
-export HELPDIR=/usr/local/share/zsh/help
+# unalias run-help &>/dev/null
+# autoload run-help
+# export HELPDIR=/usr/local/share/zsh/help
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+# export ZSH_THEME="jnappi"
+autoload -U promptinit; promptinit
+export ZSH_THEME="hyperzsh"
+export DEFAULT_USER="jon"
+prompt_context(){}
 
 ###
 ### ZSH Autosuggestions Configurations
@@ -90,6 +103,11 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=yellow'
 ###
 export GOPATH="${HOME}/.go-packages"
 export PATH="${PATH}:${GOPATH}/bin"
+
+###
+### Rust configuration
+###
+export PATH="${HOME}/.cargo/bin:${PATH}"
 
 ###
 ### Virtualenv Settings
@@ -193,8 +211,16 @@ alias bup="brew update && brew cask update && brew upgrade && brew cleanup"
 alias gs="git status"
 alias gc="git commit"
 alias gcm="git commit -m"
+alias gco="git checkout"
 alias pull="git pull"
 alias push="git push"
+alias sweep="git branch --merged master | cut -c 3- | egrep -v '^master$' | xargs -n 1 git branch -d"
+
+###
+### Docker Aliases
+###
+alias dc="docker-compose"
+alias dcp="dc ps"
 
 ###############################################################################
 # Fetch the specified Pull Request for the current repository into the
@@ -228,3 +254,20 @@ lpasscp()
 {
 	lpass show --password "$1" | xargs echo -n | pbcopy
 }
+
+###
+### JS Related Aliases
+###
+alias node='docker run -it --rm -v "$PWD":"$PWD" -w "$PWD"  -u "$(id -u)" node node'
+alias vue='docker run -it --rm -v "$PWD":"$PWD" -w "$PWD"  -u "$(id -u)" ebiven/vue-cli vue'
+
+###
+### Shell Startup Logic
+###
+# if the rezsh_lock variable is unset, then set the lock and run the rezsh 
+# command. this is only _implicitly_ run once to ensure that subsequent calls 
+# which re-source this zshrc file won't require re-sourcing it twice.
+if [ -z ${rezsh_lock+x} ]; then
+	export rezsh_lock=true
+	rezsh
+fi
