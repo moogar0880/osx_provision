@@ -10,43 +10,46 @@ homebrew_cask_apps:
   - alfred
   - appcleaner
   - bettertouchtool
+  - bitwarden
   - caffeine
   - calibre
   - ckb-next
-  - dash
+  - disk-inventory-x
   - docker
   - dropbox
-  - disk-inventory-x
+  - firefox
   - flame
   - flux
   - goland
-  - google-chrome
   - google-drive
-  - firefox
+  - gpgtools
   - hammerspoon
   - handbrake
   - iterm2
-  - keepassxc
+  - mailspring
   - onyx
   - plex-media-server
-  - pycharm
+  - signal
   - skype
+  - slack
   - spotify
+  - steam
   - subler
   - sublercli
-  - transmission
   - the-unarchiver
-  - vagrant
+  - transmission
   - virtualbox
+  - virtualbox-extension-pack
   - visual-studio-code
   - vlc
-  - wmail
-  # Quicklook Enhancements
+  - wireshark
+
+homebrew_quicklook_enhancements:
   - qlcolorcode
+  - qlimagesize
+  - qlprettypatch
   - qlstephen
   - quicklook-json
-  - qlprettypatch
-  - qlimagesize
 
 ###
 ### ITerm2 Variables

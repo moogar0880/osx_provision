@@ -23,7 +23,6 @@ cron_job: "ansible-playbook -i {{ playbook_path }}/inventory {{ playbook_path }}
 ###
 ### Python Variables
 ###
-virtualenv_path: "{{ home }}/.virtualenvs"
 pypi_username: moogar0880
 
 font_casks:

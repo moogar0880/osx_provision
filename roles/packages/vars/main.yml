@@ -6,23 +6,29 @@ homebrew_packages:
   - diff-so-fancy
   - docker
   - docker-compose
-  - docker-machine
   - exa
+  - flac
   - gettext
   - go
+  - go-swagger
+  - golangci-lint
   - htop-osx
-  - openssl
+  - httpie
+  - msgpack
   - neovim
   - pkg-config
-  - pv
+  - protobuf
   - readline
+  - ripgrep
+  - rustc-completion
   - rustup-init
   - shellcheck
   - ssh-copy-id
+  - syncthing
   - tmux
   - translate-shell
   - tree
-  - wget
+  - x265
   - zsh
   - zsh-autosuggestions
   - zsh-syntax-highlighting

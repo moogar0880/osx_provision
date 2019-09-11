@@ -1,31 +1,13 @@
 ---
 
-- name: Python | Install | Python 2.7.x
-  homebrew:
-    name=python
-    state=present
-  tags: ["system", "python"]
-
 - name: Python | Install | Python 3.x.x
   homebrew:
     name=python3
     state=present
   tags: ["system", "python"]
 
-- name: Python | Link | Python 2.7.x
-  command: brew linkapps python
-  tags: ["system", "python"]
-
 - name: Python | Link | Python 3.x.x
   command: brew linkapps python3
-  tags: ["system", "python"]
-
-- name: Python | Configure | Create .virtualenvs Directory
-  file:
-    path="{{ virtualenv_path }}"
-    state=directory
-    owner="{{ user }}"
-    group="{{ group }}"
   tags: ["system", "python"]
 
 - name: Python | Configure | Create .pypirc

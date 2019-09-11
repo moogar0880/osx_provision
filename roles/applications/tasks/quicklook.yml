@@ -1,0 +1,7 @@
+---
+- name: QuickLook | Configure | Ensure QuickLook Extensions are Installed
+  homebrew_cask:
+    name="{{ item }}"
+    state=present
+  with_items: "{{ homebrew_quicklook_enhancements }}"
+  tags: applications
