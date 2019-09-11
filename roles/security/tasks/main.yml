@@ -18,3 +18,8 @@
   tags:
     - security
     - gpg
+
+- include: java.yml
+  tags:
+    - security
+    - java
